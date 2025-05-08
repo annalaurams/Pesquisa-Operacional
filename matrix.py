@@ -14,7 +14,7 @@ def exibir_melhor_solucao(valid_solutions):
         print(f"Função objetivo: {best_obj}")
         print("x =", [best_assign[f"x{i}"] for i in range(1, file.n + 1)])
     else:
-        print("\nNenhuma solução viável encontrada.\n")
+        print("\nNenhuma solução viável encontrada.")
 
 def testar_combinacao(variables):
     remaining = []
@@ -30,13 +30,13 @@ def testar_combinacao(variables):
             value = constraint[var]
             row.append(value)
         A_list.append(row)
-    A = np.array(A_list, int)
+    A = np.array(A_list, float)
 
     b_list = []
     for constraint in file.constraint:
         result_value = constraint['result']
         b_list.append(result_value)
-    b = np.array(b_list, int)
+    b = np.array(b_list, float)
 
     try:
         sol = np.linalg.solve(A, b)
@@ -56,13 +56,17 @@ def testar_combinacao(variables):
         var_name = f"x{i}"
         x_list.append(assignment[var_name])
 
-    z = sum(file.objective_function[i] * x_list[i] for i in range(file.n))
+    z = 0
+    for i in range(file.n):
+        coeficiente = file.objective_function[i]
+        valor_variavel = x_list[i]
+        produto = coeficiente * valor_variavel
+        z += produto
 
-    if any(val < 0 for val in assignment.values()):
+    if any(val < -1e-6 for val in assignment.values()):
         return x_list, z, False, assignment
 
     return x_list, z, True, assignment
-
 
 def resolver_sistemas():
     valid_solutions = []

@@ -14,15 +14,15 @@ def readFile(file_path):
         m = int(line[1])
 
         line = file.readline().strip().split()
-        objective_function = [int(valor) for valor in line]
+        objective_function = [float(valor) for valor in line]
 
         for _ in range(m):
             line = file.readline().strip().split()
             restricao_temp = {}
             for indice in range(n):
                 variavel = "x" + str(indice + 1)
-                restricao_temp[variavel] = int(line[indice])
-            restricao_temp['result'] = int(line[-1])
+                restricao_temp[variavel] = float(line[indice])
+            restricao_temp['result'] = float(line[-1])
             constraint.append(restricao_temp)
 
 def print_():
