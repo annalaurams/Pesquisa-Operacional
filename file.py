@@ -1,43 +1,33 @@
+import sys
+
 constraint = []
 objective_function = []
 n = 0
 m = 0
 
-def readFile():
+def readFile(file_path):
     global constraint, objective_function, n, m
 
-    file = open('arquivo.txt', 'r')
-
-    line = file.readline().strip().split()
-    n = int(line[0])
-    m = int(line[1])
-
-    line = file.readline().strip().split()
-    for valor in line:
-        objective_function.append(int(valor))
-
-    counter = 0
-    while counter < m:
+    with open(file_path, 'r') as file:
         line = file.readline().strip().split()
+        n = int(line[0])
+        m = int(line[1])
 
-        restricao_temp = {}
-        for indice in range(n):
-            variavel = "x" + str(indice + 1)
-            restricao_temp[variavel] = int(line[indice])
+        line = file.readline().strip().split()
+        objective_function = [int(valor) for valor in line]
 
-        restricao_temp['result'] = int(line[-1])
+        for _ in range(m):
+            line = file.readline().strip().split()
+            restricao_temp = {}
+            for indice in range(n):
+                variavel = "x" + str(indice + 1)
+                restricao_temp[variavel] = int(line[indice])
+            restricao_temp['result'] = int(line[-1])
+            constraint.append(restricao_temp)
 
-        constraint.append(restricao_temp)
-
-        counter += 1
-
-    file.close()
-    
 def print_():
-    print()
     print("\nVariáveis:", n, "\nRestrições:", m)
     print("\nFunção objetivo:", objective_function, "\n")
     for r in constraint:
         print(r)
-    print("______________________________________________________________\n")
-    
+    print("______________________________________________________________________________________________\n")
