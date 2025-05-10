@@ -1,12 +1,12 @@
 import sys
 
-constraint = []
-objective_function = []
+restricoes = []
+funcao_objetivo = []
 n = 0
 m = 0
 
 def readFile(file_path):
-    global constraint, objective_function, n, m
+    global restricoes, funcao_objetivo, n, m
 
     with open(file_path, 'r') as file:
         line = file.readline().strip().split()
@@ -14,7 +14,9 @@ def readFile(file_path):
         m = int(line[1])
 
         line = file.readline().strip().split()
-        objective_function = [float(valor) for valor in line]
+        for valor in line:
+            valor_float = float(valor) 
+            funcao_objetivo.append(valor_float)
 
         for _ in range(m):
             line = file.readline().strip().split()
@@ -23,11 +25,11 @@ def readFile(file_path):
                 variavel = "x" + str(indice + 1)
                 restricao_temp[variavel] = float(line[indice])
             restricao_temp['result'] = float(line[-1])
-            constraint.append(restricao_temp)
+            restricoes.append(restricao_temp)
 
 def print_():
     print("\nVariáveis:", n, "\nRestrições:", m)
-    print("\nFunção objetivo:", objective_function, "\n")
-    for r in constraint:
+    print("\nFunção objetivo:", funcao_objetivo, "\n")
+    for r in restricoes:
         print(r)
     print("______________________________________________________________________________________________\n")

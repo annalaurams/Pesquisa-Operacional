@@ -1,8 +1,24 @@
 # Resolução de Sistemas Lineares
 
+<div align = "center" >
+
+[![requirement](https://img.shields.io/badge/IDE-Visual%20Studio%20Code-informational)](https://code.visualstudio.com/docs/?dv=linux64_deb)
+![Linguagem](https://img.shields.io/badge/Linguagem-Python-orange)
+</div>
+
 Este projeto tem como objetivo resolver sistemas lineares originados de problemas de Programação Linear (PL) para problemas de Minimização, utilizando o método da enumeração de soluções básicas.
 
-## Estrutura dos Arquivos
+## 📚 Método de Eliminação de Gauss
+
+Este projeto utiliza o **método de eliminação de Gauss**, também conhecido como escalonamento. O objetivo é transformar a matriz do sistema em uma forma triangular superior e, em seguida, aplicar substituição regressiva para encontrar os valores das variáveis.
+
+
+   Para entender melhor o método de Gauss, recomendo a leitura dos materiais disponíveis em:
+> [https://www.ime.unicamp.br/~valle/Teaching/MS211/Aula03.pdf](https://www.ime.unicamp.br/~valle/Teaching/MS211/Aula03.pdf)
+> [https://www.geeksforgeeks.org/gaussian-elimination/](https://www.geeksforgeeks.org/gaussian-elimination/)
+
+
+## 📂 Estrutura dos Arquivos
 
 - `file.py` : Responsável pela leitura dos dados do arquivo de entrada.
 - `matrix.py` : Contém a lógica de geração de combinações de variáveis básicas, resolução dos sistemas lineares e análise das soluções.
@@ -16,7 +32,8 @@ Este projeto tem como objetivo resolver sistemas lineares originados de problema
   ...
   ```
 
-## Como Executar
+
+## 💻 Como Executar
 
 
 1. Execute o programa passando o caminho do arquivo como argumento:
@@ -27,7 +44,7 @@ Este projeto tem como objetivo resolver sistemas lineares originados de problema
 2. Acompanhe a saída no terminal.
    
 
-## Exemplo
+## 📄 Exemplo
 
 <p align="center"><strong>Entrada</strong></p>
 
@@ -77,7 +94,7 @@ x = [1, 3, 0, 1, 0]
 
 
 
-## Contato
+## 📞 Contato
 > **Anna Laura Moura**  
 > [LinkedIn](https://www.linkedin.com/in/anna-laura-614384205)  
 > [nalauramoura@gmail.com](mailto:nalauramoura@gmail.com)

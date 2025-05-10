@@ -5,14 +5,14 @@ import sys
 def main():
     
     if len(sys.argv) < 2:
-        print("Uso: python3 main.py <caminho_do_arquivo>")
+        print("\nO comando deve ser: python3 main.py <caminho_do_arquivo>\n")
         sys.exit(1)
 
     file_path = sys.argv[1]
     file.readFile(file_path)
     # file.print_()
 
-    matrix.generate_combinations()
+    matrix.gerar_combinacoes()
     matrix.resolver_sistemas()
     print("\n")
 
