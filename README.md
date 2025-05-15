@@ -1,48 +1,69 @@
 # Resolução de Sistemas Lineares
 
-<div align = "center" >
+<div align="center">
 
-[![requirement](https://img.shields.io/badge/IDE-Visual%20Studio%20Code-informational)](https://code.visualstudio.com/docs/?dv=linux64_deb)
+[![IDE](https://img.shields.io/badge/IDE-Visual%20Studio%20Code-informational)](https://code.visualstudio.com/docs/?dv=linux64_deb)
 ![Linguagem](https://img.shields.io/badge/Linguagem-Python-orange)
+
 </div>
 
-Este projeto tem como objetivo resolver sistemas lineares originados de problemas de Programação Linear (PL) para problemas de Minimização, utilizando o método da enumeração de soluções básicas.
+Este projeto tem como finalidade resolver sistemas lineares provenientes de problemas de **Programação Linear (PL)** para casos de **minimização**, utilizando o método de **enumeração de soluções básicas**.
 
-## 📚 Método de Eliminação de Gauss
+---
 
-Este projeto utiliza o **método de eliminação de Gauss**, também conhecido como escalonamento. O objetivo é transformar a matriz do sistema em uma forma triangular superior e, em seguida, aplicar substituição regressiva para encontrar os valores das variáveis.
+### 🖥️ Requisitos do Ambiente
+
+- **Python:** Versão 3.12 ou superior instalada ([instale aqui](https://www.python.org/downloads/))
+- **Bibliotecas**
+  - [NumPy](https://numpy.org/doc/stable/) – para manipulação de matrizes e resolução de sistemas lineares
+  - [itertools](https://docs.python.org/3/library/itertools.html) – para geração de combinações de variáveis básicas
+  - [sys](https://docs.python.org/3/library/sys.html) – para captura de argumentos passados via linha de comando
 
 
-   Para entender melhor o método de Gauss, recomendo a leitura dos materiais disponíveis em:
-> [https://www.ime.unicamp.br/~valle/Teaching/MS211/Aula03.pdf](https://www.ime.unicamp.br/~valle/Teaching/MS211/Aula03.pdf)
-> [https://www.geeksforgeeks.org/gaussian-elimination/](https://www.geeksforgeeks.org/gaussian-elimination/)
+### 🧪 Execução do Programa
 
+1. No terminal, execute:
+
+   ```bash
+   python3 main.py caminho_do_arquivo.txt
+   ```
+
+   Substitua `caminho_do_arquivo.txt` pelo caminho real do seu arquivo de entrada (ex: `input/LP_00.txt`).
+
+2. Acompanhe a saída do terminal.
 
 ## 📂 Estrutura dos Arquivos
 
-- `file.py` : Responsável pela leitura dos dados do arquivo de entrada.
-- `matrix.py` : Contém a lógica de geração de combinações de variáveis básicas, resolução dos sistemas lineares e análise das soluções.
-- Arquivo de entrada (por exemplo: `input/LP_00.txt`) com o seguinte formato:
-  
+- `file.py` : Responsável pela leitura e estruturação dos dados de entrada.
+- `matrix.py` : Geração de combinações básicas, resolução dos sistemas e avaliação das soluções.
+- Arquivos de entrada (ex: `input/LP_00.txt`) devem seguir o seguinte formato:
+
   ```
   <número de variáveis> <número de restrições>
-  <coeficientes da função objetivo>
+  <coeficientes da função objetivo>ão infinita
   <coeficientes da 1ª restrição>
   <coeficientes da 2ª restrição>
   ...
   ```
 
+---
 
-## 💻 Como Executar
+## 📚 Resolução de Sistemas com NumPy
 
+A resolução dos sistemas lineares é realizada por meio da biblioteca [**NumPy**](https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html),. O método utilizado é:
 
-1. Execute o programa passando o caminho do arquivo como argumento:
-   ```bash
-   python3 main.py caminho_do_arquivo.txt
-   ```
+```python
+sol = np.linalg.solve(A, b)  
+```
 
-2. Acompanhe a saída no terminal.
-   
+Caso o sistema não admita solução, o programa captura a exceção:
+
+```python
+except np.linalg.LinAlgError:
+```
+
+---
+
 
 ## 📄 Exemplo
 
@@ -91,7 +112,6 @@ Solução ótima encontrada!
 Função objetivo: -7.0
 x = [1, 3, 0, 1, 0]
 ```
-
 
 
 ## 📞 Contato

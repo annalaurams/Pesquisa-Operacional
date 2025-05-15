@@ -1,45 +1,11 @@
 import file
 from itertools import combinations
-
-def metodo_gauss(A, b):
-    n = len(A)
-
-    # Criar matriz aumentada [A | b]
-    for i in range(n):
-        A[i].append(b[i])
-
-    # Eliminação para triangular superior
-    for i in range(n):
-        
-        # Verifica se o pivô é zero e troca de linha se necessário
-        if abs(A[i][i]) < 1e-12:
-            for j in range(i + 1, n):
-                if abs(A[j][i]) > 1e-12:
-                    A[i], A[j] = A[j], A[i]
-                    break
-            else:
-                return None  # sistema impossível ou indeterminado
-
-        # Eliminação abaixo do pivô
-        for j in range(i + 1, n):
-            fator = A[j][i] / A[i][i]
-            for k in range(i, n + 1):
-                A[j][k] -= fator * A[i][k]
-
-    # Substituição regressiva
-    x = [0] * n
-    for i in range(n - 1, -1, -1):
-        soma = 0
-        for j in range(i + 1, n):
-            soma += A[i][j] * x[j]
-        x[i] = (A[i][n] - soma) / A[i][i]
-
-    return x
+import numpy as np
 
 def gerar_combinacoes():
     k = file.n - file.m
     for _ in combinations(range(1, file.n + 1), k):
-        pass
+        pass 
 
 def exibir_melhor_solucao(solucao_valida):
     if solucao_valida:
@@ -50,34 +16,38 @@ def exibir_melhor_solucao(solucao_valida):
     else:
         print("\nNenhuma solução viável encontrada.")
 
-
 def testar_combinacao(variaveis):
+
     restante = []
+
     for i in range(1, file.n + 1):
         if i not in variaveis:
-            restante.append(f"x{i}")
+            var_name = f"x{i}"
+            restante.append(var_name)
 
     A_list = []
-    for restricao in file.restricoes:
+
+    for restricoes in file.restricoes:
         row = []
         for var in restante:
-            value = restricao[var]
+            value = restricoes[var]
             row.append(value)
         A_list.append(row)
+    A = np.array(A_list, float)
 
     b_list = []
-    for restricao in file.restricoes:
-        b_list.append(restricao['result'])
+    for restricoes in file.restricoes:
+        result_value = restricoes['result']
+        b_list.append(result_value)
+    b = np.array(b_list, float)
 
-    # Resolvendo manualmente com eliminação de Gauss
-    
-    A = [list(row) for row in A_list]
-    b = list(b_list)
-    sol = metodo_gauss(A, b)
-    if sol is None:
-        return None  # sistema sem solução
+    try:
+        sol = np.linalg.solve(A, b) # resolve o sistema Ax = b
+    except np.linalg.LinAlgError: # sistema sem solução
+        return None 
 
     resposta = {}
+
     for i in variaveis:
         var_name = f"x{i}"
         resposta[var_name] = 0.0
@@ -102,8 +72,8 @@ def testar_combinacao(variaveis):
 
     return x_list, z, True, resposta
 
-
 def resolver_sistemas():
+
     solucao_valida = []
     viaveis = 0
     inviaveis = 0
@@ -112,6 +82,9 @@ def resolver_sistemas():
 
     for variaveis in todas_combinacoes:
         resultado = testar_combinacao(variaveis)
+
+        # print(f"\nTestando combinação: {variaveis}")
+        # print("Resultado", resultado)
 
         if resultado is None:
             continue  # sistema sem solução
