@@ -50,7 +50,7 @@ Este projeto tem como finalidade resolver sistemas lineares provenientes de prob
 
 ## 📚 Resolução de Sistemas com NumPy
 
-A resolução dos sistemas lineares é realizada por meio da biblioteca [**NumPy**](https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html),. O método utilizado é:
+A resolução dos sistemas lineares é realizada por meio da biblioteca [**NumPy**](https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html). O método utilizado é:
 
 ```python
 sol = np.linalg.solve(A, b)  
