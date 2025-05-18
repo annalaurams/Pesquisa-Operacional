@@ -40,7 +40,7 @@ Este projeto tem como finalidade resolver sistemas lineares provenientes de prob
 
   ```
   <número de variáveis> <número de restrições>
-  <coeficientes da função objetivo>ão infinita
+  <coeficientes da função objetivo>
   <coeficientes da 1ª restrição>
   <coeficientes da 2ª restrição>
   ...
