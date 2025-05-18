@@ -18,13 +18,13 @@ Este projeto tem como finalidade resolver sistemas lineares provenientes de prob
   - [NumPy](https://numpy.org/doc/stable/) – para manipulação de matrizes e resolução de sistemas lineares
   - [itertools](https://docs.python.org/3/library/itertools.html) – para geração de combinações de variáveis básicas
   - [sys](https://docs.python.org/3/library/sys.html) – para captura de argumentos passados via linha de comando
-
+- Sistema Operacional em que o código foi desenvolvido: Ubuntu 24.04.02
 
 ### 🧪 Execução do Programa
 
 1. Certifique-se de estar dentro da pasta `src`
 
-1. No terminal, execute:
+2. No terminal, execute:
 
    ```bash
    python3 main.py caminho_do_arquivo.txt
@@ -38,7 +38,7 @@ Este projeto tem como finalidade resolver sistemas lineares provenientes de prob
    python3 main.py input/LP_00.txt 
    ```
 
-2. Acompanhe a saída do terminal.
+3. Acompanhe a saída do terminal.
 
 ---
 
