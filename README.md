@@ -22,6 +22,8 @@ Este projeto tem como finalidade resolver sistemas lineares provenientes de prob
 
 ### 🧪 Execução do Programa
 
+1. Certifique-se de estar dentro da pasta `src`
+
 1. No terminal, execute:
 
    ```bash
@@ -30,7 +32,15 @@ Este projeto tem como finalidade resolver sistemas lineares provenientes de prob
 
    Substitua `caminho_do_arquivo.txt` pelo caminho real do seu arquivo de entrada (ex: `input/LP_00.txt`).
 
+
+   Exemplo do comando completo:
+   ```bash
+   python3 main.py input/LP_00.txt 
+   ```
+
 2. Acompanhe a saída do terminal.
+
+---
 
 ## 📂 Estrutura dos Arquivos
 
@@ -62,7 +72,7 @@ Caso o sistema não admita solução, o programa captura a exceção:
 except np.linalg.LinAlgError:
 ```
 
----
+
 
 
 ## 📄 Exemplo
@@ -112,7 +122,7 @@ Solução ótima encontrada!
 Função objetivo: -7.0
 x = [1, 3, 0, 1, 0]
 ```
-
+---
 
 ## 📞 Contato
 > **Anna Laura Moura**  
